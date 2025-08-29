@@ -1,7 +1,16 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import dotenv from "dotenv";
+import { fileURLToPath } from 'url'; // Add this
+import { dirname, resolve } from 'path'; // Add this
 
+// Get __dirname equivalent for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Load environment variables from .env file
+dotenv.config({ path: resolve(__dirname, '../.env') });
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -47,25 +56,37 @@ app.use((req, res, next) => {
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
-  });
+  // Modified port handling with fallback
+  const basePort = parseInt(process.env.PORT || '3000', 10);
+  const maxRetries = 10;
+  const host = process.env.HOST || "127.0.0.1";
+  
+  const startServer = (currentPort: number, attempt: number = 0) => {
+    server.listen({
+      port: currentPort,
+      host : "127.0.0.1",
+    }, () => {
+      log(`serving on port ${currentPort}`);
+}).on('error', (err: NodeJS.ErrnoException) => {
+  if (err.code === 'EADDRINUSE' && attempt < maxRetries) {
+    const nextPort = currentPort + 1;
+    log(`Port ${currentPort} is unavailable, trying ${nextPort} instead`);
+    server.close();
+    startServer(nextPort, attempt + 1);
+  } else {
+    if (err.code !== 'EADDRINUSE') {
+      log(`Server failed to start: ${err.code} - ${err.message}`);
+    }
+    throw err;
+  }
+});
+  };
+  
+  startServer(basePort);
 })();

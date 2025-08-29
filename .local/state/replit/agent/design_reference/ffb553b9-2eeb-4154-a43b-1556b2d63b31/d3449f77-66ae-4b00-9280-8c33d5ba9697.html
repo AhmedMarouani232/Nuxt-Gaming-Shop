@@ -1,0 +1,1093 @@
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexTech - Gaming Accessories & Computers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'gaming-blue': '#3B82F6',
+                        'gaming-purple': '#8B5CF6',
+                        'gaming-dark': '#0F172A',
+                        'gaming-slate': '#1E293B',
+                        'gaming-gray': '#334155',
+                        'gaming-green': '#10B981',
+                        'gaming-red': '#EF4444'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gaming-dark text-white min-h-screen">
+    <!-- @COMPONENT: Navigation -->
+    <nav class="bg-gaming-slate border-b border-gaming-gray sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-gaming-blue to-gaming-purple rounded-lg flex items-center justify-center">
+                        <i class="fas fa-gamepad text-white text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-gaming-blue to-gaming-purple bg-clip-text text-transparent">
+                        NexTech
+                    </span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-white hover:text-gaming-blue transition-colors" data-page="home">Home</a>
+                    <a href="#" class="text-gray-300 hover:text-gaming-blue transition-colors" data-page="preorders">Pre-Orders</a>
+                    <a href="#" class="text-gray-300 hover:text-gaming-blue transition-colors" data-page="deals">Deals</a>
+                    <a href="#" class="text-gray-300 hover:text-gaming-blue transition-colors" data-page="contact">Contact</a>
+                </div>
+
+                <!-- User Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Search -->
+                    <div class="hidden md:block relative">
+                        <input type="text" placeholder="Search products..." 
+                               class="bg-gaming-gray text-white placeholder-gray-400 px-4 py-2 pr-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-blue w-64">
+                        <i class="fas fa-search absolute right-3 top-2.5 text-gray-400"></i>
+                    </div>
+
+                    <!-- Cart -->
+                    <button class="relative p-2 text-gray-300 hover:text-white transition-colors" data-page="cart">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-gaming-red text-white text-xs rounded-full h-5 w-5 flex items-center justify-center" data-bind="cart.itemCount">3</span>
+                    </button>
+
+                    <!-- User Menu -->
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors" data-auth-state="logged-out">
+                            <i class="fas fa-user text-xl"></i>
+                            <span class="hidden sm:inline" data-page="login">Login</span>
+                        </button>
+                        
+                        <!-- User Menu (when logged in) -->
+                        <div class="hidden" data-auth-state="logged-in">
+                            <button class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
+                                <i class="fas fa-user-circle text-xl"></i>
+                                <span class="hidden sm:inline" data-bind="user.name">John Doe</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden p-2 text-gray-300 hover:text-white transition-colors">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: HeroSection -->
+    <section class="bg-gradient-to-r from-gaming-dark via-gaming-slate to-gaming-dark py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    <span class="bg-gradient-to-r from-gaming-blue via-gaming-purple to-gaming-green bg-clip-text text-transparent">
+                        Level Up Your Gaming
+                    </span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Discover the latest gaming accessories, high-performance computers, and cutting-edge technology. 
+                    From professional gaming gear to custom PC builds.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-gradient-to-r from-gaming-blue to-gaming-purple hover:from-gaming-purple hover:to-gaming-blue text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                        Shop Now
+                    </button>
+                    <button class="border border-gaming-blue text-gaming-blue hover:bg-gaming-blue hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+                        View Deals
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- @COMPONENT: FiltersSidebar -->
+            <aside class="lg:w-80 bg-gaming-slate rounded-xl p-6 h-fit sticky top-24">
+                <h2 class="text-xl font-bold mb-6 text-white">Filters</h2>
+                
+                <!-- Search Filter -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium mb-2 text-gray-300">Search by Name</label>
+                    <input type="text" placeholder="Search products..." 
+                           class="w-full bg-gaming-gray text-white placeholder-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-blue"
+                           data-filter="search">
+                </div>
+
+                <!-- Price Range -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium mb-2 text-gray-300">Price Range</label>
+                    <div class="px-3">
+                        <input type="range" min="0" max="5000" value="2500" 
+                               class="w-full h-2 bg-gaming-gray rounded-lg appearance-none cursor-pointer"
+                               data-filter="price-range">
+                        <div class="flex justify-between text-sm text-gray-400 mt-1">
+                            <span>$0</span>
+                            <span data-bind="filters.priceRange">$2,500</span>
+                            <span>$5,000+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium mb-2 text-gray-300">Category</label>
+                    <div class="space-y-2 max-h-48 overflow-y-auto">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded bg-gaming-gray border-gaming-gray text-gaming-blue focus:ring-gaming-blue">
+                            <span class="ml-2 text-sm text-gray-300">Gaming Mice</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded bg-gaming-gray border-gaming-gray text-gaming-blue focus:ring-gaming-blue">
+                            <span class="ml-2 text-sm text-gray-300">Keyboards</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded bg-gaming-gray border-gaming-gray text-gaming-blue focus:ring-gaming-blue">
+                            <span class="ml-2 text-sm text-gray-300">Headsets</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded bg-gaming-gray border-gaming-gray text-gaming-blue focus:ring-gaming-blue">
+                            <span class="ml-2 text-sm text-gray-300">Monitors</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded bg-gaming-gray border-gaming-gray text-gaming-blue focus:ring-gaming-blue">
+                            <span class="ml-2 text-sm text-gray-300">Pre-built PCs</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded bg-gaming-gray border-gaming-gray text-gaming-blue focus:ring-gaming-blue">
+                            <span class="ml-2 text-sm text-gray-300">Components</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Brand Filter -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium mb-2 text-gray-300">Brand</label>
+                    <div class="space-y-2 max-h-32 overflow-y-auto">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded bg-gaming-gray border-gaming-gray text-gaming-blue focus:ring-gaming-blue">
+                            <span class="ml-2 text-sm text-gray-300">Razer</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded bg-gaming-gray border-gaming-gray text-gaming-blue focus:ring-gaming-blue">
+                            <span class="ml-2 text-sm text-gray-300">Logitech</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded bg-gaming-gray border-gaming-gray text-gaming-blue focus:ring-gaming-blue">
+                            <span class="ml-2 text-sm text-gray-300">ASUS</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded bg-gaming-gray border-gaming-gray text-gaming-blue focus:ring-gaming-blue">
+                            <span class="ml-2 text-sm text-gray-300">Corsair</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Availability -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium mb-2 text-gray-300">Availability</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="availability" class="text-gaming-blue focus:ring-gaming-blue bg-gaming-gray border-gaming-gray">
+                            <span class="ml-2 text-sm text-gray-300">All</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="availability" class="text-gaming-blue focus:ring-gaming-blue bg-gaming-gray border-gaming-gray">
+                            <span class="ml-2 text-sm text-gray-300">In Stock</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="availability" class="text-gaming-blue focus:ring-gaming-blue bg-gaming-gray border-gaming-gray">
+                            <span class="ml-2 text-sm text-gray-300">Pre-Order</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Rating Filter -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium mb-2 text-gray-300">Minimum Rating</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="rating" class="text-gaming-blue focus:ring-gaming-blue bg-gaming-gray border-gaming-gray">
+                            <span class="ml-2 flex items-center text-sm text-gray-300">
+                                <span class="text-yellow-400">★★★★★</span>
+                                <span class="ml-1">5 Stars</span>
+                            </span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="rating" class="text-gaming-blue focus:ring-gaming-blue bg-gaming-gray border-gaming-gray">
+                            <span class="ml-2 flex items-center text-sm text-gray-300">
+                                <span class="text-yellow-400">★★★★</span>
+                                <span class="ml-1">4+ Stars</span>
+                            </span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="rating" class="text-gaming-blue focus:ring-gaming-blue bg-gaming-gray border-gaming-gray">
+                            <span class="ml-2 flex items-center text-sm text-gray-300">
+                                <span class="text-yellow-400">★★★</span>
+                                <span class="ml-1">3+ Stars</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Sort By -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium mb-2 text-gray-300">Sort By</label>
+                    <select class="w-full bg-gaming-gray text-white px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-blue">
+                        <option>Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Customer Rating</option>
+                        <option>Newest</option>
+                        <option>Best Selling</option>
+                    </select>
+                </div>
+
+                <!-- Clear Filters -->
+                <button class="w-full bg-gaming-gray hover:bg-gaming-blue text-white py-2 rounded-lg transition-colors">
+                    Clear All Filters
+                </button>
+            </aside>
+            <!-- @END_COMPONENT: FiltersSidebar -->
+
+            <!-- @COMPONENT: ProductGrid -->
+            <main class="flex-1">
+                <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <h2 class="text-2xl font-bold text-white">Gaming Products</h2>
+                    <span class="text-gray-400" data-bind="products.totalCount">Showing 24 of 156 products</span>
+                </div>
+
+                <!-- @MAP: products.map(product => ( -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Product Card 1 -->
+                    <div class="bg-gaming-slate rounded-xl overflow-hidden hover:shadow-xl hover:shadow-gaming-blue/20 transition-all duration-300 group">
+                        <!-- Razer DeathAdder V3 Pro gaming mouse -->
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300" 
+                                 alt="Razer DeathAdder V3 Pro gaming mouse" 
+                                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute top-3 right-3 bg-gaming-red text-white px-2 py-1 rounded text-sm font-semibold">
+                                -15%
+                            </div>
+                            <div class="absolute bottom-3 left-3 bg-gaming-green text-white px-2 py-1 rounded text-xs">
+                                In Stock
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-gaming-blue transition-colors">
+                                Razer DeathAdder V3 Pro
+                            </h3>
+                            <p class="text-gray-400 text-sm mb-3">Ultra-lightweight wireless gaming mouse with Focus Pro 30K sensor</p>
+                            <div class="flex items-center mb-3">
+                                <span class="text-yellow-400">★★★★★</span>
+                                <span class="text-gray-400 text-sm ml-2">(1,234)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-2xl font-bold text-white">$149.99</span>
+                                    <span class="text-gray-400 line-through">$179.99</span>
+                                </div>
+                                <button class="bg-gaming-blue hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="bg-gaming-slate rounded-xl overflow-hidden hover:shadow-xl hover:shadow-gaming-blue/20 transition-all duration-300 group">
+                        <!-- Mechanical RGB gaming keyboard -->
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300" 
+                                 alt="Mechanical RGB gaming keyboard" 
+                                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute bottom-3 left-3 bg-gaming-green text-white px-2 py-1 rounded text-xs">
+                                In Stock
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-gaming-blue transition-colors">
+                                Corsair K95 RGB Platinum
+                            </h3>
+                            <p class="text-gray-400 text-sm mb-3">Mechanical gaming keyboard with Cherry MX switches and RGB lighting</p>
+                            <div class="flex items-center mb-3">
+                                <span class="text-yellow-400">★★★★☆</span>
+                                <span class="text-gray-400 text-sm ml-2">(891)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-2xl font-bold text-white">$199.99</span>
+                                </div>
+                                <button class="bg-gaming-blue hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="bg-gaming-slate rounded-xl overflow-hidden hover:shadow-xl hover:shadow-gaming-blue/20 transition-all duration-300 group">
+                        <!-- Gaming headset with microphone -->
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300" 
+                                 alt="Gaming headset with microphone" 
+                                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute top-3 right-3 bg-gaming-purple text-white px-2 py-1 rounded text-sm font-semibold">
+                                New
+                            </div>
+                            <div class="absolute bottom-3 left-3 bg-gaming-green text-white px-2 py-1 rounded text-xs">
+                                In Stock
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-gaming-blue transition-colors">
+                                SteelSeries Arctis 7P
+                            </h3>
+                            <p class="text-gray-400 text-sm mb-3">Wireless gaming headset with lossless 2.4GHz connection</p>
+                            <div class="flex items-center mb-3">
+                                <span class="text-yellow-400">★★★★★</span>
+                                <span class="text-gray-400 text-sm ml-2">(2,156)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-2xl font-bold text-white">$169.99</span>
+                                </div>
+                                <button class="bg-gaming-blue hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="bg-gaming-slate rounded-xl overflow-hidden hover:shadow-xl hover:shadow-gaming-blue/20 transition-all duration-300 group">
+                        <!-- High-resolution gaming monitor -->
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300" 
+                                 alt="High-resolution gaming monitor" 
+                                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute top-3 right-3 bg-gaming-red text-white px-2 py-1 rounded text-sm font-semibold">
+                                -25%
+                            </div>
+                            <div class="absolute bottom-3 left-3 bg-orange-500 text-white px-2 py-1 rounded text-xs">
+                                Pre-Order
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-gaming-blue transition-colors">
+                                ASUS ROG Swift PG279QM
+                            </h3>
+                            <p class="text-gray-400 text-sm mb-3">27" 1440p 240Hz IPS gaming monitor with G-SYNC</p>
+                            <div class="flex items-center mb-3">
+                                <span class="text-yellow-400">★★★★★</span>
+                                <span class="text-gray-400 text-sm ml-2">(456)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-2xl font-bold text-white">$599.99</span>
+                                    <span class="text-gray-400 line-through">$799.99</span>
+                                </div>
+                                <button class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition-colors">
+                                    Pre-Order
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 -->
+                    <div class="bg-gaming-slate rounded-xl overflow-hidden hover:shadow-xl hover:shadow-gaming-blue/20 transition-all duration-300 group">
+                        <!-- High-performance gaming PC tower -->
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300" 
+                                 alt="High-performance gaming PC tower" 
+                                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute top-3 right-3 bg-gaming-purple text-white px-2 py-1 rounded text-sm font-semibold">
+                                Featured
+                            </div>
+                            <div class="absolute bottom-3 left-3 bg-gaming-green text-white px-2 py-1 rounded text-xs">
+                                In Stock
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-gaming-blue transition-colors">
+                                NexTech Gaming Elite
+                            </h3>
+                            <p class="text-gray-400 text-sm mb-3">Pre-built gaming PC with RTX 4080 and Intel i7-13700K</p>
+                            <div class="flex items-center mb-3">
+                                <span class="text-yellow-400">★★★★★</span>
+                                <span class="text-gray-400 text-sm ml-2">(187)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-2xl font-bold text-white">$2,899.99</span>
+                                </div>
+                                <button class="bg-gaming-blue hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 6 -->
+                    <div class="bg-gaming-slate rounded-xl overflow-hidden hover:shadow-xl hover:shadow-gaming-blue/20 transition-all duration-300 group">
+                        <!-- High-end graphics card -->
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=300" 
+                                 alt="High-end graphics card" 
+                                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute bottom-3 left-3 bg-gaming-green text-white px-2 py-1 rounded text-xs">
+                                In Stock
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-gaming-blue transition-colors">
+                                NVIDIA RTX 4090
+                            </h3>
+                            <p class="text-gray-400 text-sm mb-3">24GB GDDR6X graphics card for ultimate 4K gaming performance</p>
+                            <div class="flex items-center mb-3">
+                                <span class="text-yellow-400">★★★★★</span>
+                                <span class="text-gray-400 text-sm ml-2">(743)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-2xl font-bold text-white">$1,599.99</span>
+                                </div>
+                                <button class="bg-gaming-blue hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- @END_MAP )) -->
+
+                <!-- Pagination -->
+                <div class="mt-12 flex justify-center">
+                    <nav class="flex items-center space-x-2">
+                        <button class="px-3 py-2 text-gray-400 hover:text-white transition-colors">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="px-3 py-2 bg-gaming-blue text-white rounded">1</button>
+                        <button class="px-3 py-2 text-gray-400 hover:text-white transition-colors">2</button>
+                        <button class="px-3 py-2 text-gray-400 hover:text-white transition-colors">3</button>
+                        <span class="px-3 py-2 text-gray-400">...</span>
+                        <button class="px-3 py-2 text-gray-400 hover:text-white transition-colors">8</button>
+                        <button class="px-3 py-2 text-gray-400 hover:text-white transition-colors">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </nav>
+                </div>
+            </main>
+            <!-- @END_COMPONENT: ProductGrid -->
+        </div>
+    </div>
+
+    <!-- @COMPONENT: LoginModal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="loginModal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-gaming-slate rounded-xl p-8 w-full max-w-md">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-white">Login</h2>
+                    <button class="text-gray-400 hover:text-white transition-colors" onclick="closeModal('loginModal')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form class="space-y-4" data-implementation="Should validate form before submission">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                        <input type="email" required 
+                               class="w-full bg-gaming-gray text-white placeholder-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-blue"
+                               placeholder="your@email.com">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Password</label>
+                        <input type="password" required 
+                               class="w-full bg-gaming-gray text-white placeholder-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-blue"
+                               placeholder="Enter your password">
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded bg-gaming-gray border-gaming-gray text-gaming-blue focus:ring-gaming-blue">
+                            <span class="ml-2 text-sm text-gray-300">Remember me</span>
+                        </label>
+                        <a href="#" class="text-sm text-gaming-blue hover:text-blue-300 transition-colors">
+                            Forgot password?
+                        </a>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full bg-gaming-blue hover:bg-blue-600 text-white py-2 rounded-lg transition-colors"
+                            data-event="click:handleLogin">
+                        Login
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <span class="text-gray-400">Don't have an account? </span>
+                    <button class="text-gaming-blue hover:text-blue-300 transition-colors" onclick="switchToSignup()">
+                        Sign up
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: LoginModal -->
+
+    <!-- @COMPONENT: CartSidebar -->
+    <div class="fixed inset-y-0 right-0 z-50 w-96 bg-gaming-slate transform translate-x-full transition-transform duration-300 hidden" id="cartSidebar">
+        <div class="h-full flex flex-col">
+            <!-- Cart Header -->
+            <div class="p-6 border-b border-gaming-gray">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-bold text-white">Shopping Cart</h2>
+                    <button class="text-gray-400 hover:text-white transition-colors" onclick="closeCart()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <p class="text-gray-400 mt-1" data-bind="cart.itemCount">3 items</p>
+            </div>
+
+            <!-- Cart Items -->
+            <div class="flex-1 overflow-y-auto p-6">
+                <div class="space-y-4">
+                    <!-- Cart Item 1 -->
+                    <div class="flex items-center space-x-4 p-4 bg-gaming-gray rounded-lg">
+                        <!-- Gaming mouse product image -->
+                        <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&h=80" 
+                             alt="Gaming mouse product" 
+                             class="w-16 h-16 object-cover rounded">
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium">Razer DeathAdder V3 Pro</h4>
+                            <p class="text-gray-400 text-sm">$149.99</p>
+                            <div class="flex items-center mt-2">
+                                <button class="w-8 h-8 bg-gaming-blue text-white rounded flex items-center justify-center">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="mx-3 text-white" data-bind="item.quantity">1</span>
+                                <button class="w-8 h-8 bg-gaming-blue text-white rounded flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="text-gray-400 hover:text-gaming-red transition-colors">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cart Item 2 -->
+                    <div class="flex items-center space-x-4 p-4 bg-gaming-gray rounded-lg">
+                        <!-- Gaming keyboard product image -->
+                        <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&h=80" 
+                             alt="Gaming keyboard product" 
+                             class="w-16 h-16 object-cover rounded">
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium">Corsair K95 RGB Platinum</h4>
+                            <p class="text-gray-400 text-sm">$199.99</p>
+                            <div class="flex items-center mt-2">
+                                <button class="w-8 h-8 bg-gaming-blue text-white rounded flex items-center justify-center">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="mx-3 text-white" data-bind="item.quantity">1</span>
+                                <button class="w-8 h-8 bg-gaming-blue text-white rounded flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="text-gray-400 hover:text-gaming-red transition-colors">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cart Item 3 -->
+                    <div class="flex items-center space-x-4 p-4 bg-gaming-gray rounded-lg">
+                        <!-- Gaming headset product image -->
+                        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-4.0.3&auto=format&fit=crop&w=80&h=80" 
+                             alt="Gaming headset product" 
+                             class="w-16 h-16 object-cover rounded">
+                        <div class="flex-1">
+                            <h4 class="text-white font-medium">SteelSeries Arctis 7P</h4>
+                            <p class="text-gray-400 text-sm">$169.99</p>
+                            <div class="flex items-center mt-2">
+                                <button class="w-8 h-8 bg-gaming-blue text-white rounded flex items-center justify-center">
+                                    <i class="fas fa-minus text-xs"></i>
+                                </button>
+                                <span class="mx-3 text-white" data-bind="item.quantity">1</span>
+                                <button class="w-8 h-8 bg-gaming-blue text-white rounded flex items-center justify-center">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="text-gray-400 hover:text-gaming-red transition-colors">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Footer -->
+            <div class="p-6 border-t border-gaming-gray">
+                <div class="space-y-2 mb-4">
+                    <div class="flex justify-between text-gray-300">
+                        <span>Subtotal:</span>
+                        <span data-bind="cart.subtotal">$519.97</span>
+                    </div>
+                    <div class="flex justify-between text-gray-300">
+                        <span>Tax:</span>
+                        <span data-bind="cart.tax">$41.60</span>
+                    </div>
+                    <div class="flex justify-between text-gray-300">
+                        <span>Shipping:</span>
+                        <span class="text-gaming-green">Free</span>
+                    </div>
+                    <div class="flex justify-between text-lg font-bold text-white border-t border-gaming-gray pt-2">
+                        <span>Total:</span>
+                        <span data-bind="cart.total">$561.57</span>
+                    </div>
+                </div>
+                
+                <button class="w-full bg-gaming-blue hover:bg-blue-600 text-white py-3 rounded-lg mb-3 transition-colors">
+                    Proceed to Checkout
+                </button>
+                
+                <button class="w-full border border-gaming-blue text-gaming-blue hover:bg-gaming-blue hover:text-white py-3 rounded-lg transition-colors">
+                    Continue Shopping
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: CartSidebar -->
+
+    <!-- @COMPONENT: UserDashboard -->
+    <div class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" id="dashboardPage">
+        <div class="bg-gaming-slate rounded-xl p-8">
+            <h1 class="text-3xl font-bold text-white mb-8">User Dashboard</h1>
+            
+            <!-- User Profile Section -->
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-gaming-gray rounded-lg p-6">
+                    <h2 class="text-xl font-semibold text-white mb-4">Profile Information</h2>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="text-gray-300 text-sm">Name</label>
+                            <p class="text-white font-medium" data-bind="user.name">John Doe</p>
+                        </div>
+                        <div>
+                            <label class="text-gray-300 text-sm">Email</label>
+                            <p class="text-white font-medium" data-bind="user.email">john.doe@example.com</p>
+                        </div>
+                        <div>
+                            <label class="text-gray-300 text-sm">Member Since</label>
+                            <p class="text-white font-medium" data-bind="user.memberSince">January 2023</p>
+                        </div>
+                    </div>
+                    <button class="mt-4 bg-gaming-blue hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
+                        Edit Profile
+                    </button>
+                </div>
+
+                <div class="bg-gaming-gray rounded-lg p-6">
+                    <h2 class="text-xl font-semibold text-white mb-4">Quick Stats</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-gaming-blue" data-bind="user.totalOrders">12</div>
+                            <div class="text-gray-300 text-sm">Total Orders</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-gaming-green" data-bind="user.totalSpent">$2,847</div>
+                            <div class="text-gray-300 text-sm">Total Spent</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-gaming-purple" data-bind="user.rewardPoints">1,423</div>
+                            <div class="text-gray-300 text-sm">Reward Points</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-yellow-400" data-bind="user.wishlistItems">8</div>
+                            <div class="text-gray-300 text-sm">Wishlist Items</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order History -->
+            <div class="bg-gaming-gray rounded-lg p-6">
+                <h2 class="text-xl font-semibold text-white mb-4">Recent Orders</h2>
+                <div class="space-y-4">
+                    <!-- @MAP: orders.map(order => ( -->
+                    <div class="border-l-4 border-gaming-blue pl-4 py-3">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-white font-medium">Order #NX-2024-001</h3>
+                                <p class="text-gray-400 text-sm">March 15, 2024</p>
+                                <p class="text-gray-300 text-sm">2 items - $369.98</p>
+                            </div>
+                            <span class="bg-gaming-green text-white px-2 py-1 rounded text-xs">Delivered</span>
+                        </div>
+                    </div>
+
+                    <div class="border-l-4 border-orange-500 pl-4 py-3">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-white font-medium">Order #NX-2024-002</h3>
+                                <p class="text-gray-400 text-sm">March 10, 2024</p>
+                                <p class="text-gray-300 text-sm">1 item - $2,899.99</p>
+                            </div>
+                            <span class="bg-orange-500 text-white px-2 py-1 rounded text-xs">Shipping</span>
+                        </div>
+                    </div>
+
+                    <div class="border-l-4 border-gaming-blue pl-4 py-3">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-white font-medium">Order #NX-2024-003</h3>
+                                <p class="text-gray-400 text-sm">February 28, 2024</p>
+                                <p class="text-gray-300 text-sm">3 items - $789.97</p>
+                            </div>
+                            <span class="bg-gaming-green text-white px-2 py-1 rounded text-xs">Delivered</span>
+                        </div>
+                    </div>
+                    <!-- @END_MAP )) -->
+                </div>
+                <button class="mt-4 text-gaming-blue hover:text-blue-300 transition-colors">
+                    View All Orders
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: UserDashboard -->
+
+    <!-- @COMPONENT: ContactPage -->
+    <div class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" id="contactPage">
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Contact Form -->
+            <div class="bg-gaming-slate rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-white mb-6">Get in Touch</h2>
+                <form class="space-y-4" data-implementation="Should validate form before submission">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Name</label>
+                        <input type="text" required 
+                               class="w-full bg-gaming-gray text-white placeholder-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-blue"
+                               placeholder="Your full name">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                        <input type="email" required 
+                               class="w-full bg-gaming-gray text-white placeholder-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-blue"
+                               placeholder="your@email.com">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Subject</label>
+                        <select class="w-full bg-gaming-gray text-white px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-blue">
+                            <option>General Inquiry</option>
+                            <option>Order Support</option>
+                            <option>Technical Issue</option>
+                            <option>Product Question</option>
+                            <option>Partnership</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+                        <textarea rows="5" required 
+                                  class="w-full bg-gaming-gray text-white placeholder-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gaming-blue"
+                                  placeholder="Tell us how we can help..."></textarea>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full bg-gaming-blue hover:bg-blue-600 text-white py-2 rounded-lg transition-colors"
+                            data-event="click:handleContactSubmit">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="bg-gaming-slate rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div class="border border-gaming-gray rounded-lg">
+                        <button class="w-full text-left p-4 text-white hover:bg-gaming-gray transition-colors"
+                                onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium">What is your return policy?</span>
+                                <i class="fas fa-chevron-down transition-transform"></i>
+                            </div>
+                        </button>
+                        <div class="hidden p-4 pt-0 text-gray-300">
+                            We offer a 30-day return policy on all products. Items must be in original condition with all packaging and accessories included.
+                        </div>
+                    </div>
+
+                    <div class="border border-gaming-gray rounded-lg">
+                        <button class="w-full text-left p-4 text-white hover:bg-gaming-gray transition-colors"
+                                onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium">How long does shipping take?</span>
+                                <i class="fas fa-chevron-down transition-transform"></i>
+                            </div>
+                        </button>
+                        <div class="hidden p-4 pt-0 text-gray-300">
+                            Standard shipping takes 3-5 business days. Expedited shipping (1-2 days) is available for an additional fee.
+                        </div>
+                    </div>
+
+                    <div class="border border-gaming-gray rounded-lg">
+                        <button class="w-full text-left p-4 text-white hover:bg-gaming-gray transition-colors"
+                                onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium">Do you offer international shipping?</span>
+                                <i class="fas fa-chevron-down transition-transform"></i>
+                            </div>
+                        </button>
+                        <div class="hidden p-4 pt-0 text-gray-300">
+                            Yes, we ship to most countries worldwide. International shipping rates and delivery times vary by location.
+                        </div>
+                    </div>
+
+                    <div class="border border-gaming-gray rounded-lg">
+                        <button class="w-full text-left p-4 text-white hover:bg-gaming-gray transition-colors"
+                                onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium">What warranty do you provide?</span>
+                                <i class="fas fa-chevron-down transition-transform"></i>
+                            </div>
+                        </button>
+                        <div class="hidden p-4 pt-0 text-gray-300">
+                            All products come with manufacturer's warranty. Additionally, we provide a 1-year NexTech warranty on all custom-built PCs.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="mt-8 pt-8 border-t border-gaming-gray">
+                    <h3 class="text-lg font-semibold text-white mb-4">Other Ways to Reach Us</h3>
+                    <div class="space-y-2 text-gray-300">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone w-5"></i>
+                            <span class="ml-2">1-800-NEXTECH</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope w-5"></i>
+                            <span class="ml-2">support@nextech.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock w-5"></i>
+                            <span class="ml-2">Mon-Fri 9AM-6PM EST</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: ContactPage -->
+
+    <!-- Footer -->
+    <footer class="bg-gaming-slate border-t border-gaming-gray mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-gaming-blue to-gaming-purple rounded-lg flex items-center justify-center">
+                            <i class="fas fa-gamepad text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-gaming-blue to-gaming-purple bg-clip-text text-transparent">
+                            NexTech
+                        </span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Your premier destination for gaming accessories and high-performance computers.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gaming-blue transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gaming-blue transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gaming-blue transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gaming-blue transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pre-Orders</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Deals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Gaming Mice</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Keyboards</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Headsets</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Monitors</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Gaming PCs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Customer Service</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Warranty</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gaming-gray mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2024 NexTech. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation simulation
+        (function() {
+            const pages = {
+                'home': document.querySelector('main').parentElement,
+                'login': document.getElementById('loginModal'),
+                'cart': document.getElementById('cartSidebar'),
+                'dashboard': document.getElementById('dashboardPage'),
+                'contact': document.getElementById('contactPage')
+            };
+
+            // Navigation handlers
+            document.querySelectorAll('[data-page]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    if (targetPage === 'login') {
+                        showModal('loginModal');
+                    } else if (targetPage === 'cart') {
+                        toggleCart();
+                    } else {
+                        showPage(targetPage);
+                    }
+                });
+            });
+
+            function showPage(pageName) {
+                // Hide all pages
+                Object.values(pages).forEach(page => {
+                    if (page) page.classList.add('hidden');
+                });
+                
+                // Show target page
+                if (pages[pageName]) {
+                    pages[pageName].classList.remove('hidden');
+                }
+                
+                // Update navigation active states
+                document.querySelectorAll('[data-page]').forEach(link => {
+                    const linkPage = link.getAttribute('data-page');
+                    if (linkPage === pageName) {
+                        link.classList.add('text-white');
+                        link.classList.remove('text-gray-300');
+                    } else {
+                        link.classList.add('text-gray-300');
+                        link.classList.remove('text-white');
+                    }
+                });
+            }
+
+            // Modal functionality
+            window.showModal = function(modalId) {
+                document.getElementById(modalId).classList.remove('hidden');
+            };
+
+            window.closeModal = function(modalId) {
+                document.getElementById(modalId).classList.add('hidden');
+            };
+
+            // Cart functionality
+            window.toggleCart = function() {
+                const cart = document.getElementById('cartSidebar');
+                cart.classList.toggle('hidden');
+                cart.classList.toggle('translate-x-full');
+            };
+
+            window.closeCart = function() {
+                const cart = document.getElementById('cartSidebar');
+                cart.classList.add('hidden');
+                cart.classList.add('translate-x-full');
+            };
+
+            // FAQ toggle functionality
+            window.toggleFAQ = function(button) {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            };
+
+            // Filter functionality simulation
+            document.querySelectorAll('[data-filter]').forEach(filter => {
+                filter.addEventListener('change', function() {
+                    // TODO: Implement real-time filtering logic
+                    console.log('Filter changed:', this.getAttribute('data-filter'), this.value);
+                });
+            });
+
+            // Form submission handlers
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // TODO: Implement form validation and submission logic
+                    console.log('Form submitted:', this);
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
